@@ -1,43 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'flavors.dart';
-import 'pages/home.dart';
+import 'package:get/get.dart';
+import 'package:sunbook/screens/intro_screen.dart';
+import 'class/flavors_controller.dart';
+import 'class/theme_controller.dart';
+import 'services/route_navigator.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: F.title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: _flavorBanner(
-        child: const HomeScreen(),
-        show: kDebugMode,
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      getPages: routeNav,
+      title: Flavor.title,
+      darkTheme: ThemeController.themeDataDark,
+      theme: ThemeController.themeDataPrimary,
+      home: const IntroScreen(),
     );
   }
-
-  Widget _flavorBanner({
-    required Widget child,
-    bool show = true,
-  }) =>
-      show
-          ? Banner(
-              location: BannerLocation.topStart,
-              message: F.name,
-              color: Colors.green.withOpacity(0.6),
-              textStyle: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12.0,
-                  letterSpacing: 1.0),
-              textDirection: TextDirection.ltr,
-              child: child,
-            )
-          : Container(
-              child: child,
-            );
 }
