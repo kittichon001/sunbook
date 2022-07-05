@@ -7,11 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:sunbook/main_develop.dart';
-import 'package:sunbook/main_production.dart';
-import 'package:sunbook/main_staging.dart';
-import 'package:sunbook/pages/Home.dart';
+import 'package:sunbook/screens/home_screen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
